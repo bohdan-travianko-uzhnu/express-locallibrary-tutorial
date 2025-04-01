@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { DateTime } = require("luxon");
 
 const Schema = mongoose.Schema;
-
+    
 const BookInstanceSchema = new Schema({
   book: { type: Schema.Types.ObjectId, ref: "Book", required: true }, // reference to the associated book
   imprint: { type: String, required: true },
@@ -23,7 +23,7 @@ BookInstanceSchema.virtual("url").get(function () {
 
 // Virtual for a better Date format
 BookInstanceSchema.virtual("due_back_formatted").get(function () {
-  return DateTime.fromJSDate(this.due_back).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+  return DateTime.fromJSDate(this.due_back).setLocale("uk").toLocaleString(DateTime.DATE_FULL); 
 });
 
 
