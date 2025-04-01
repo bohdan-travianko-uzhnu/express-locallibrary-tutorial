@@ -15,12 +15,13 @@ block content
           dt
             a(href=book.url) #{book.title}
           dd #{book.summary}
+    p Please delete these books first or remove this author from them.
 
   else
     p Do you really want to delete this Author?
 
     form(method='POST')
       div.form-group
-        input#authorid.form-control(type='hidden', name='authorid', value=author._id )
-
-      button.btn.btn-primary(type='submit') Delete
+        input#authorid.form-control(type='hidden', name='authorid', value=author._id )   
+        button.btn.btn-primary(type='submit') Delete
+        a.btn.btn-secondary(href=author.url) Cancel
